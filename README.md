@@ -5,7 +5,7 @@
  `EXPREMENTS- > `
  
  
- ![DAY - 1](https://github.com/HiteshGorana/AmExpert-2019-Machine-Learning-Hackathon/tree/master/Day-1)
+ [`DAY - 1`](https://github.com/HiteshGorana/AmExpert-2019-Machine-Learning-Hackathon/tree/master/Day-1)
  
 | `Number`  | `MODEL`  | `CV`  | `LB` |`Description`|
 | ----------- | ----------- |----------- |----------- |----------- |
