@@ -74,6 +74,7 @@
 | 7      | Title       |Title       |Title       |Title       |
 | 8      | Title       |Title       |Title       |Title       |
 | 9      | Title       |Title       |Title       |Title       |
+
 `DAY - 6`
  
 | `Number`  | `MODEL`  | `CV`  | `LB` |`Description`|
@@ -87,6 +88,7 @@
 | 7      | Title       |Title       |Title       |Title       |
 | 8      | Title       |Title       |Title       |Title       |
 | 9      | Title       |Title       |Title       |Title       |
+
 `DAY - 7`
  
 | `Number`  | `MODEL`  | `CV`  | `LB` |`Description`|
