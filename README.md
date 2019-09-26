@@ -5,37 +5,38 @@
  `EXPREMENTS- > `
  
  
- [`DAY - 1`](https://github.com/HiteshGorana/AmExpert-2019-Machine-Learning-Hackathon/tree/master/Day-1)
+ [`DAY - 1`](./Day-1)
  
  ```
  HERE IMPORTANT THINGS
  ```
  
-| `SUBMISSION`  | `MODEL`  | `CV`  | `LB` |`Description`|
-| ----------- | ----------- |----------- |----------- |----------- |
-| 1      | Title       |Title       |Title       |Title       |
-| 2      | Title       |Title       |Title       |Title       |
-| 3      | Title       |Title       |Title       |Title       |
-| 4      | Title       |Title       |Title       |Title       |
-| 5      | Title       |Title       |Title       |Title       |
-| 6      | Title       |Title       |Title       |Title       |
-| 7      | Title       |Title       |Title       |Title       |
-| 8      | Title       |Title       |Title       |Title       |
-| 9      | Title       |Title       |Title       |Title       |
+| `SUBMISSION`  | `MODEL`  | `CV`  | `LB` |`Note`|`Args`|
+| ----------- | ----------- |----------- |----------- |----------- |----------- |
+| 1      | Title       |Title       |Title       |Title       |Title       |
+| 2      | Title       |Title       |Title       |Title       |Title       |
+| 3      | Title       |Title       |Title       |Title       |Title       |
+| 4      | Title       |Title       |Title       |Title       |Title       |
+| 5      | Title       |Title       |Title       |Title       |Title       |
+| 6      | Title       |Title       |Title       |Title       |Title       |
+| 7      | Title       |Title       |Title       |Title       |Title       |
+| 8      | Title       |Title       |Title       |Title       |Title       |
+| 9      | Title       |Title       |Title       |Title       |Title       |
 
-`DAY - 2`
+
+ [`DAY - 2`](./Day-2)
  
-| `SUBMISSION`  | `MODEL`  | `CV`  | `LB` |`Description`|
-| ----------- | ----------- |----------- |----------- |----------- |
-| 1      | Title       |Title       |Title       |Title       |
-| 2      | Title       |Title       |Title       |Title       |
-| 3      | Title       |Title       |Title       |Title       |
-| 4      | Title       |Title       |Title       |Title       |
-| 5      | Title       |Title       |Title       |Title       |
-| 6      | Title       |Title       |Title       |Title       |
-| 7      | Title       |Title       |Title       |Title       |
-| 8      | Title       |Title       |Title       |Title       |
-| 9      | Title       |Title       |Title       |Title       |
+| `SUBMISSION`  | `MODEL`  | `CV`  | `LB` |`Note`|`Args`|
+| ----------- | ----------- |----------- |----------- |----------- |----------- |
+| 1      | Title       |Title       |Title       |Title       |Title       |
+| 2      | Title       |Title       |Title       |Title       |Title       |
+| 3      | Title       |Title       |Title       |Title       |Title       |
+| 4      | Title       |Title       |Title       |Title       |Title       |
+| 5      | Title       |Title       |Title       |Title       |Title       |
+| 6      | Title       |Title       |Title       |Title       |Title       |
+| 7      | Title       |Title       |Title       |Title       |Title       |
+| 8      | Title       |Title       |Title       |Title       |Title       |
+| 9      | Title       |Title       |Title       |Title       |Title       |
 
 `DAY - 3`
  
