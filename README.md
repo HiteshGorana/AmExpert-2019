@@ -2,6 +2,13 @@
 ![](./img.png)
  Machine Learning Hackathon
  
+  ```python
+ #  Feature Engenering
+ t_['Feature'] = t_.groupby(t_['feature'])['features'].transform('mean') #  1 
+ t_['Feature'] = t_.groupby(t_['feature'])['features'].transform('mean') #  2 
+ t_['Feature'] = t_.groupby(t_['feature'])['features'].transform('mean') #  3 
+ t_['Feature'] = t_.groupby(t_['feature'])['features'].transform('mean') #  4 
+ ```
  
  [`DAY - 1`](./Day-1)
  
