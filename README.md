@@ -2,8 +2,6 @@
 ![](./img.png)
  Machine Learning Hackathon
  
- `EXPREMENTS- > `
- 
  
  [`DAY - 1`](./Day-1)
  
