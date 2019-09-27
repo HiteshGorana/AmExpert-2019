@@ -9,7 +9,7 @@
  t_['Feature'] = t_.groupby(t_['feature'])['features'].transform('mean') #  3 
  t_['Feature'] = t_.groupby(t_['feature'])['features'].transform('mean') #  4 
  ```
- 
+ ![](./dis.png)
  [`DAY - 1`](./Day-1)
  
 
