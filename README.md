@@ -11,13 +11,15 @@
  ```
  ![](./dis.png)
  ![](./info.png)
+ 
+ 
  [`DAY - 1`](./Day-1)
  
 
  
-| `Experiment name`  | `MODEL`  | `CV`  | `LB` |`Note`|`Args`|
+| `Experiment name`  | `MODEL`  | `CV`  | `LB` |`Note`|
 | ----------- | ----------- |----------- |----------- |----------- |----------- |
-| 1      | Title       |Title       |Title       |Title       |Title       |
+| 10 fold lightgbm SKFold       |LightGbm       |0.823346822002498       |0.723262091750793       |Title       |
 | 2      | Title       |Title       |Title       |Title       |Title       |
 
 
