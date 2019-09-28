@@ -41,6 +41,8 @@ data['diff_dayofyear'] = data['end_date_dayofyear'] - data['start_date_dayofyear
 | 10 fold lightgbm SKFold       |LightGbm       |0.90       |0.823638085449945       |[script](./Day-1/day-1-script-02.py)       |
 | 10 fold lightgbm SKFold       |LightGbm       |0.9019       |0.820   |[script](./Day-1/day-1-script-03.py)       |
 | 10 fold lightgbm SKFold       |Catboost       |0.8844        |0.782251894526244   |[script](./Day-1/day-1-script-04.py)       |
+| 10 fold lightgbm SKFold       |LogisticRegression|0.714118745672373        |0.652779212300426 |[script](./Day-1/day-1-script-05.py)|
+
 
 
 
