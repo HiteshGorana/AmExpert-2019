@@ -27,9 +27,7 @@ data['start_date_days_in_month'] = data['start_date'].dt.days_in_month
 data['diff_dayofweek'] = data['end_date_dayofweek'] - data['start_date_dayofweek']
 data['diff_dayofyear'] = data['end_date_dayofyear'] - data['start_date_dayofyear']
  ```
- ![](./dis.png)
- ![](./info.png)
- 
+ ![](./dis.png) 
  
  [`DAY - 1`](./Day-1)
  
