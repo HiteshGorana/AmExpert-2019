@@ -7,7 +7,8 @@
 data['campaign_id_exp_co'] = expanding_count(data['campaign_id']) # 1 No
 data['coupon_id_exp_co'] = expanding_count(data['coupon_id']) # 2 No
 data['customer_id_exp_co'] = expanding_count(data['customer_id']) # 3 No
-data['rented_count']=data['customer_id'].map(feature(customer_demographics, 'customer_id','rented','sum'))#No
+data['rented_count'] = data['customer_id'].map(feature(customer_demographics, 'customer_id','rented','sum')).\
+fillna(0.07964084495607981) # 4 No
  ```
  ![](./dis.png)
  ![](./info.png)
