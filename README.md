@@ -10,9 +10,9 @@ data['customer_id_exp_co'] = expanding_count(data['customer_id']) # 3 No
 data['rented_count'] = data['customer_id'].map(feature(customer_demographics, 'customer_id','rented','sum')).\
 fillna(0.07964084495607981) # 4 No
 #  campaign_id based features
-data['campaign_id_count'] = data['campaign_id'].map(data['campaign_id'].value_counts())
-data['coupon_id_count'] = data['coupon_id'].map(data['coupon_id'].value_counts())
-data['customer_id_count'] = data['customer_id'].map(data['customer_id'].value_counts())
+data['campaign_id_count'] = data['campaign_id'].map(data['campaign_id'].value_counts()) #  No
+data['coupon_id_count'] = data['coupon_id'].map(data['coupon_id'].value_counts())#  No
+data['customer_id_count'] = data['customer_id'].map(data['customer_id'].value_counts())#  No
 
 # TIME BASED FEATURES
 data['difference'] = (data['end_date'] - data['start_date']) / np.timedelta64(1, 'D') # 1
