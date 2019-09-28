@@ -21,7 +21,7 @@ fillna(0.07964084495607981) # 4 No
 | `Experiment name`  | `MODEL`  | `CV`  | `LB` |`Note`|
 | ----------- | ----------- |----------- |----------- |----------- |
 | 10 fold lightgbm SKFold       |LightGbm       |0.823346822002498       |0.723262091750793       |Title       |
-| 2      | Title       |Title       |Title       |Title       |Title       |
+| 10 fold lightgbm SKFold       |LightGbm       |0.90       |0.823638085449945       |Title       |
 
 
  [`DAY - 2`](./Day-2)
