@@ -18,10 +18,10 @@ fillna(0.07964084495607981) # 4 No
  
 
  
-| `Experiment name`  | `MODEL`  | `CV`  | `LB` |`Note`|
+| `Experiment name`  | `MODEL`  | `CV`  | `LB` |`script`|
 | ----------- | ----------- |----------- |----------- |----------- |
-| 10 fold lightgbm SKFold       |LightGbm       |0.823346822002498       |0.723262091750793       |Title       |
-| 10 fold lightgbm SKFold       |LightGbm       |0.90       |0.823638085449945       |Title       |
+| 10 fold lightgbm SKFold       |LightGbm       |0.823346822002498       |0.723262091750793       |[script](./Day-1/day_1_sub_1.py)|
+| 10 fold lightgbm SKFold       |LightGbm       |0.90       |0.823638085449945       |[script](./Day-1/day-1-script-02.py)       |
 
 
  [`DAY - 2`](./Day-2)
