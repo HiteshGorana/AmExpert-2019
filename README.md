@@ -4,10 +4,9 @@
  
   ```python
  #  Feature Engenering
- t_['Feature'] = t_.groupby(t_['feature'])['features'].transform('mean') #  1 
- t_['Feature'] = t_.groupby(t_['feature'])['features'].transform('mean') #  2 
- t_['Feature'] = t_.groupby(t_['feature'])['features'].transform('mean') #  3 
- t_['Feature'] = t_.groupby(t_['feature'])['features'].transform('mean') #  4 
+data['campaign_id_exp_co'] = expanding_count(data['campaign_id']) # 1 No
+data['coupon_id_exp_co'] = expanding_count(data['coupon_id']) # 2 No
+data['customer_id_exp_co'] = expanding_count(data['customer_id']) # 3 No
  ```
  ![](./dis.png)
  ![](./info.png)
