@@ -55,10 +55,10 @@ data['start_date_dayofweek'] = data['start_date'].dt.dayofweek
  
 | `Experiment name`  | `MODEL`  | `CV`  | `LB` |`script`|
 | ----------- | ----------- |----------- |----------- |----------- |
-| 10 fold lightgbm SKFold       |LightGbm       |0.823346822002498       |0.723262091750793       |[script](./Day-1/day_1_sub_1.py)|
-| 10 fold lightgbm SKFold       |LightGbm       |0.90       |0.823638085449945       |[script](./Day-1/day-1-script-02.py)       |
-| 10 fold lightgbm SKFold       |LightGbm       |0.9019       |0.820   |[script](./Day-1/day-1-script-03.py)       |
-| 10 fold Catboost SKFold       |Catboost       |0.8844        |0.782251894526244   |[script](./Day-1/day-1-script-04.py)       |
+| 10 fold lightgbm SKFold|LightGbm|0.823346822002498|0.723262091750793|[script](./Day-1/day_1_sub_1.py)|
+| 10 fold lightgbm SKFold|LightGbm|0.90|0.823638085449945|[script](./Day-1/day-1-script-02.py)       |
+| 10 fold lightgbm SKFold|LightGbm|0.9019|0.820|[script](./Day-1/day-1-script-03.py)       |
+| 10 fold Catboost SKFold|Catboost|0.8844|0.782251894526244|[script](./Day-1/day-1-script-04.py)       |
 | 10 fold LR SKFold |LogisticRegression|0.714118745672373|0.652779212300426 |[script](./Day-1/day-1-script-05.py)|
 | 10 fold RFClassifier SKFold |RandomForestClassifier|0.826985519407373|0.749643707078551|[script](./Day-1/day-1-script-06.py)|
 | 10 fold Neural Network SKFold|Neural Network|0.89|0.784766559598147 |[script](./Day-1/day-1-script-07.py)|
