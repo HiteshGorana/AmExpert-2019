@@ -64,14 +64,12 @@ data['start_date_dayofweek'] = data['start_date'].dt.dayofweek
 | 10 fold Neural Network SKFold|Neural Network|0.89|0.784766559598147 |[script](./Day-1/day-1-script-07.py)|
 
 
- [`DAY - 2`](./Day-2)
-  
-
-| `Experiment name`  | `MODEL`  | `CV`  | `LB` |`Note`|`Args`|
-| ----------- | ----------- |----------- |----------- |----------- |----------- |
-| 1      | Title       |Title       |Title       |Title       |Title       |
-| 2      | Title       |Title       |Title       |Title       |Title       |
-
+[`DAY - 2`](./Day-2)
+ 
+| `Experiment name`  | `MODEL`  | `CV`  | `LB` |`script`|
+| ----------- | ----------- |----------- |----------- |----------- |
+| 10 fold lightgbm SKFold       |LightGbm       |0.9350552975642958       |0.524130796162195 |[script](./Day-2/day-2-script-01.py)|
+| 10 fold Catboost SKFold       |Catboost       |0.9228868511304172        |0.858604946914161   |[script](./Day-2/day-2-script-02.py)|
 
  [`DAY - 3`](./Day-3)
   
