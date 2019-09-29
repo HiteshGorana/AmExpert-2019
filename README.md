@@ -73,6 +73,7 @@ data['start_date_dayofweek'] = data['start_date'].dt.dayofweek
 | 10 fold lightgbm SKFold       |LightGbm       |0.9310951709368533       |0.522719863441945 |[script](./Day-2/day-2-script-01-1.py)|
 | 10 fold Neural Network SKFold|Neural Network|0.8973715008465092|0.82850696157902 |[script](./Day-2/day-2-script-05.py)|
 | 10 fold lightgbm SKFold       |LightGbm       |0.921       |0.856898502528373 |[script](./Day-2/day-2-script-01-2.py)|
+| 10 fold LR SKFold |LogisticRegression|0.8904360694325838|0.719326611691508 |[script](./Day-2/day-2-script-03.py)|
 
 
  [`DAY - 3`](./Day-3)
