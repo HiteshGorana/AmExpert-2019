@@ -1,0 +1,172 @@
+import pandas as pd
+import numpy as np
+from datetime import timedelta
+from tqdm import tqdm_notebook as tqdm
+from sklearn import metrics
+from sklearn.model_selection import StratifiedKFold
+import lightgbm as lgb
+from matplotlib import pyplot as plt
+import seaborn as sns
+from collections import defaultdict, Counter
+from sklearn.preprocessing import StandardScaler, MinMaxScaler, PolynomialFeatures, RobustScaler
+from sklearn.model_selection import KFold
+from sklearn.metrics import roc_auc_score as auc
+from sklearn.linear_model import LogisticRegression
+import xgboost as xgb
+
+file = {
+	'test' : '../input/amexpert-2019/test.csv',
+	'train':'../input/amexpert-2019/train.csv',
+	'submission':'../input/amexpert-2019/submission.csv',
+	'coupon_item_mapping' :'../input/amexpert-2019/coupon_item_mapping.csv',
+	'campaign_data' : '../input/amexpert-2019/campaign_data.csv',
+	'item_data' : '../input/amexpert-2019/item_data.csv',
+	'customer_transaction_data':'../input/amexpert-2019/customer_transaction_data.csv',
+	'customer_demographics':'../input/amexpert-2019/customer_demographics.csv',
+}
+#campaign_data, customer_demographics customer_transaction_data
+# item_data, coupon_item_mapping
+train = pd.read_csv(file.get("train"))#
+test = pd.read_csv(file.get("test"))#
+
+coupon_item_mapping = pd.read_csv(file.get("coupon_item_mapping"))#No
+item_data = pd.read_csv(file.get("item_data"))# may be yes
+customer_transaction_data = pd.read_csv(file.get("customer_transaction_data"))#may be yes 
+
+campaign_data = pd.read_csv(file.get("campaign_data"))#
+customer_demographics = pd.read_csv(file.get("customer_demographics"))#
+submission = pd.read_csv(file.get("submission"))
+data = pd.concat([train, test], sort=False).reset_index(drop = True)
+ltr = len(train)
+data = data.merge(campaign_data, on='campaign_id')#  campaign_data
+data['start_date'] = pd.to_datetime(data['start_date'], dayfirst=True)
+data['end_date'] = pd.to_datetime(data['end_date'], dayfirst=True)
+data['campaign_type'] = pd.Series(data['campaign_type'].factorize()[0]).replace(-1, np.nan)
+#######################################################################
+# customer_demographics
+customer_demographics['no_of_children'] = customer_demographics['no_of_children'].replace('3+', 3).astype(float)
+customer_demographics['family_size'] = customer_demographics['family_size'].replace('5+', 3).astype(float)
+customer_demographics['marital_status'] = pd.Series(customer_demographics['marital_status'].factorize()[0]).replace(-1, np.nan)
+customer_demographics['age_range'] = pd.Series(customer_demographics['age_range'].factorize()[0]).replace(-1, np.nan)
+
+# rented
+rented_mean = customer_demographics.groupby("customer_id")['rented'].mean().to_dict()
+data['rented_mean'] = data['customer_id'].map(rented_mean)
+# income_bracket
+income_bracket_sum = customer_demographics.groupby("customer_id")['income_bracket'].sum().to_dict()
+data['income_bracket_sum'] = data['customer_id'].map(income_bracket_sum)
+# age_range
+age_range_mean = customer_demographics.groupby("customer_id")['age_range'].mean().to_dict()
+data['age_range_mean'] = data['customer_id'].map(age_range_mean)
+# family_size
+family_size_mean = customer_demographics.groupby("customer_id")['family_size'].mean().to_dict()
+data['family_size_mean'] = data['customer_id'].map(family_size_mean)
+# no_of_children
+no_of_children_mean = customer_demographics.groupby("customer_id")['no_of_children'].mean().to_dict()
+data['no_of_children_mean'] = data['customer_id'].map(no_of_children_mean)
+no_of_children_count = customer_demographics.groupby("customer_id")['no_of_children'].count().to_dict()
+data['no_of_children_count'] = data['customer_id'].map(no_of_children_count)
+# marital_status
+marital_status_count = customer_demographics.groupby("customer_id")['marital_status'].count().to_dict()
+data['marital_status_count'] = data['customer_id'].map(marital_status_count)
+#############################################################################
+# customer_transaction_data
+customer_transaction_data['date'] = pd.to_datetime(customer_transaction_data['date'])
+# quantity	
+quantity_mean = customer_transaction_data.groupby("customer_id")['quantity'].mean().to_dict()
+data['quantity_mean'] = data['customer_id'].map(quantity_mean)
+#coupon_discount
+coupon_discount_mean = customer_transaction_data.groupby("customer_id")['coupon_discount'].mean().to_dict()
+data['coupon_discount_mean'] = data['customer_id'].map(coupon_discount_mean)
+# other_discount
+other_discount_mean = customer_transaction_data.groupby("customer_id")['other_discount'].mean().to_dict()
+data['other_discount_mean'] = data['customer_id'].map(other_discount_mean)
+# selling_price
+selling_price_mean = customer_transaction_data.groupby("customer_id")['selling_price'].mean().to_dict()
+data['selling_price_mean'] = data['customer_id'].map(selling_price_mean)
+# day
+customer_transaction_data['day'] = customer_transaction_data.date.dt.day
+date_day_mean = customer_transaction_data.groupby("customer_id")['day'].mean().to_dict()
+data['date_day_mean'] = data['customer_id'].map(date_day_mean)
+#coupon_item_mapping, item_data
+coupon_item_mapping = coupon_item_mapping.merge(item_data, how = 'left', on = 'item_id')
+coupon_item_mapping['brand_type'] = pd.Series(coupon_item_mapping['brand_type'].factorize()[0]).replace(-1, np.nan)
+coupon_item_mapping['category'] = pd.Series(coupon_item_mapping['category'].factorize()[0]).replace(-1, np.nan)
+
+brand_mean = coupon_item_mapping.groupby("coupon_id")['brand'].mean().to_dict()
+data['brand_mean'] = data['coupon_id'].map(brand_mean)
+
+brand_type_mean = coupon_item_mapping.groupby("coupon_id")['brand_type'].mean().to_dict()
+data['brand_type_mean'] = data['coupon_id'].map(brand_type_mean)
+
+category_mean = coupon_item_mapping.groupby("coupon_id")['category'].mean().to_dict()
+data['category_mean'] = data['coupon_id'].map(category_mean)
+train_cols = [i for i in data.columns if i not in ['id','redemption_status','start_date','end_date']]
+def standart_split(data, n_splits):
+    split_list = []
+    for i in range(n_splits):
+        kf = StratifiedKFold(n_splits=10, shuffle = True, random_state = 228)
+        for train_index, test_index in kf.split(data.iloc[:ltr, :], data['redemption_status'][:ltr]):
+            split_list += [(train_index, test_index)]
+    return split_list
+
+split_list = standart_split(data, 1)
+
+def xgb_train(data, target, ltr, train_cols, split_list, param, n_e = 10000, cat_col = None, verb_num = None, imp=False):
+    pred = pd.DataFrame()
+    pred_val = np.zeros(ltr)
+    score = []
+    j = 0
+    train_pred = pd.DataFrame()
+    models = []
+    for i , (train_index, test_index) in enumerate(split_list):
+        from sklearn.preprocessing import StandardScaler
+        sc = StandardScaler()
+        param['seed'] = i
+        tr = xgb.DMatrix(sc.fit_transform(np.array(data[train_cols])[train_index]), np.array(data[target])[train_index])
+        te = xgb.DMatrix(sc.fit_transform(np.array(data[train_cols])[test_index]), np.array(data[target])[test_index])
+        tt = xgb.DMatrix(sc.fit_transform(np.array(data[train_cols]))[ltr:, :])
+        evallist = [(tr, 'train'), (te, 'test')]
+        bst = xgb.train(param, tr, n_e, evallist,
+                        early_stopping_rounds=150, verbose_eval = verb_num)
+        
+        pred[str(i)] =bst.predict(tt)
+        pred_val[test_index] = bst.predict(te)
+        score += [metrics.roc_auc_score(np.array(data[target])[test_index], pred_val[test_index])]
+        models.append(bst)
+        print(i, 'MEAN: ', np.mean(score), 'LAST: ', score[-1])
+    train_pred[str(j)] = pred_val
+    ans = pd.Series( pred.mean(axis = 1).tolist())
+    ans.name = 'xgb'
+    return pred, score, train_pred, bst
+params = {'eta': 0.05,
+          'tree_method': "hist",
+          'grow_policy': "lossguide",
+          'max_leaves': 1400,  
+          'max_depth': 0, 
+          'subsample': 0.9, 
+          'colsample_bytree': 0.7, 
+          'colsample_bylevel':0.7,
+          'min_child_weight':0,
+          'alpha':4,
+          'objective': 'binary:logistic', 
+          'scale_pos_weight':9,
+          'eval_metric': 'auc', 
+          'nthread':8,
+          'random_state': 99}
+prediction, scores, oof, model = xgb_train(data, 'redemption_status', ltr, train_cols,
+                       split_list, params,  verb_num  = 250)
+
+tmp = prediction.copy()
+for col in tmp.columns:
+    tmp[col] = tmp[col].rank()
+tmp = tmp.mean(axis = 1)
+tmp  =tmp / tmp.max()
+day = 2
+sub = 6
+name = f"day_{day}_sub_{sub}"
+tmp = dict(zip(test.id.values, tmp))
+answer1 = pd.DataFrame()
+answer1['id'] = test.id.values
+answer1['redemption_status'] = answer1['id'].map(tmp)
+answer1.to_csv(f'{name}.csv', index = None)
