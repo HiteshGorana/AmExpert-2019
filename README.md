@@ -87,6 +87,8 @@ data['start_date_dayofweek'] = data['start_date'].dt.dayofweek
 | 10 fold Catboost SKFold       |Catboost       |0.9308        |0.865776922589758   |[script](./Day-3/day-3-script-02.py)|
 | 10 fold Neural Network SKFold|Neural Network|0.84|0.7850|[script](./Day-3/day-3-script-05.py)|
 | 10 fold LR SKFold |LogisticRegression|0.9320890009072823|0.816381526068571 |[script](./Day-3/day-3-script-03.py)|
+| 10 fold LR SKFold |LogisticRegression|0.939574276261373|0.844352061185897 |[script](./Day-3/day-3-script-03-1.py)|
+
 
 
 
