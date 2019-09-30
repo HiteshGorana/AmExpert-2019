@@ -82,10 +82,9 @@ data['start_date_dayofweek'] = data['start_date'].dt.dayofweek
  [`DAY - 3`](./Day-3)
   
 
-| `Experiment name`  | `MODEL`  | `CV`  | `LB` |`Note`|`Args`|
-| ----------- | ----------- |----------- |----------- |----------- |----------- |
-| 1      | Title       |Title       |Title       |Title       |Title       |
-| 2      | Title       |Title       |Title       |Title       |Title       |
+ `Experiment name`  | `MODEL`  | `CV`  | `LB` |`script`|
+| ----------- | ----------- |----------- |----------- |----------- |
+| 10 fold Catboost SKFold       |Catboost       |0.9308        |0.865776922589758   |[script](./Day-3/day-3-script-02.py)|
 
 
  [`DAY - 4`](./Day-4)
