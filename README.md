@@ -99,6 +99,7 @@ data['start_date_dayofweek'] = data['start_date'].dt.dayofweek
 | ----------- | ----------- |----------- |----------- |----------- |
 | 10 fold LR SKFold |LogisticRegression|0.9314615391099851|0.851458473863422 |[script](./Day-4/day-4-script-03-1.py)|
 | 10 fold LR SKFold |LogisticRegression|0.0.9283575376577058|0.845012685430648 |[script](./Day-4/day-4-script-03-2.py)|
+| 10 fold Catboost SKFold       |Catboost       |0.9286831462504616        |0.872226005111576   |[script](./Day-4/day-4-script-02.py)|
 
  [`DAY - 5`](./Day-5)
   
