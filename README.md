@@ -92,15 +92,12 @@ data['start_date_dayofweek'] = data['start_date'].dt.dayofweek
 
 
 
-
-
  [`DAY - 4`](./Day-4)
   
 
-| `Experiment name`  | `MODEL`  | `CV`  | `LB` |`Note`|`Args`|
-| ----------- | ----------- |----------- |----------- |----------- |----------- |
-| 1      | Title       |Title       |Title       |Title       |Title       |
-| 2      | Title       |Title       |Title       |Title       |Title       |
+ `Experiment name`  | `MODEL`  | `CV`  | `LB` |`script`|
+| ----------- | ----------- |----------- |----------- |----------- |
+| 10 fold LR SKFold |LogisticRegression|0.9314615391099851|0.851458473863422 |[script](./Day-4/day-4-script-03-1.py)|
 
 
  [`DAY - 5`](./Day-5)
