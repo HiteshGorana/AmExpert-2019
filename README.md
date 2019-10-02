@@ -104,10 +104,9 @@ data['start_date_dayofweek'] = data['start_date'].dt.dayofweek
  [`DAY - 5`](./Day-5)
   
 
-| `Experiment name`  | `MODEL`  | `CV`  | `LB` |`Note`|`Args`|
-| ----------- | ----------- |----------- |----------- |----------- |----------- |
-| 1      | Title       |Title       |Title       |Title       |Title       |
-| 2      | Title       |Title       |Title       |Title       |Title       |
+ `Experiment name`  | `MODEL`  | `CV`  | `LB` |`script`|
+| ----------- | ----------- |----------- |----------- |----------- |
+| 10 fold Neural Network SKFold|Neural Network|0.8956508231411103|0.828661146198473|[script](./Day-5/day-5-script-05.py)|
 
 
  [`DAY - 6`](./Day-6)
