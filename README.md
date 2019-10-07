@@ -109,6 +109,8 @@ data['start_date_dayofweek'] = data['start_date'].dt.dayofweek
 | 10 fold Neural Network SKFold|Neural Network|0.8956508231411103|0.828661146198473|[script](./Day-5/day-5-script-05.py)|
 
 
+# `AFTER COMPETITIONS SOLUTIONS `
+
 | `Private Lb`  | `Link`  |
 | ----------- | ----------- |
-|18th|[rajat5ranjan](https://github.com/rajat5ranjan/AV-AmExpert-2019-ML-Hackathon)|
+|18th|[`rajat5ranjan`](https://github.com/rajat5ranjan/AV-AmExpert-2019-ML-Hackathon)|
